@@ -12,14 +12,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [Serializable]
         public class MovementSettings
         {
-            public float ForwardSpeed = 8.0f;   // Speed when walking forward
+            public float ForwardSpeed = 0.1f;   // Speed when walking forward
             public float BackwardSpeed = 4.0f;  // Speed when walking backwards
             public float StrafeSpeed = 4.0f;    // Speed when walking sideways
-            public float RunMultiplier = 2.0f;   // Speed when sprinting
+            public float RunMultiplier = 0.0f;   // Speed when sprinting
 	        public KeyCode RunKey = KeyCode.LeftShift;
-            public float JumpForce = 30f;
+            public float JumpForce = 20f;
             public AnimationCurve SlopeCurveModifier = new AnimationCurve(new Keyframe(-90.0f, 1.0f), new Keyframe(0.0f, 1.0f), new Keyframe(90.0f, 0.0f));
-            [HideInInspector] public float CurrentTargetSpeed = 8f;
+            [HideInInspector] public float CurrentTargetSpeed = 0.1f;
 
 #if !MOBILE_INPUT
             private bool m_Running;
@@ -70,7 +70,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public class AdvancedSettings
         {
             public float groundCheckDistance = 0.01f; // distance for checking if the controller is grounded ( 0.01f seems to work best for this )
-            public float stickToGroundHelperDistance = 0.5f; // stops the character
+            public float stickToGroundHelperDistance = 10.5f; // stops the character
             public float slowDownRate = 20f; // rate at which the controller comes to a stop when there is no input
             public bool airControl; // can the user control the direction that is being moved in the air
             [Tooltip("set it to 0.1 or more if you get stuck in wall")]
@@ -143,7 +143,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             GroundCheck();
             Vector2 input = GetInput();
 
-            if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && (advancedSettings.airControl || m_IsGrounded))
+            if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon))
             {
                 // always move along the camera forward as it is the direction that it being aimed at
                 Vector3 desiredMove = cam.transform.forward*input.y + cam.transform.right*input.x;
