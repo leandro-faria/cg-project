@@ -13,8 +13,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public class MovementSettings
         {
             public float ForwardSpeed = 0.1f;   // Speed when walking forward
-            public float BackwardSpeed = 4.0f;  // Speed when walking backwards
-            public float StrafeSpeed = 4.0f;    // Speed when walking sideways
+            public float BackwardSpeed = 0.1f;  // Speed when walking backwards
+            public float StrafeSpeed = 0.1f;    // Speed when walking sideways
             public float RunMultiplier = 0.0f;   // Speed when sprinting
 	        public KeyCode RunKey = KeyCode.LeftShift;
             public float JumpForce = 20f;
